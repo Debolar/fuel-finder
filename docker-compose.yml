@@ -1,0 +1,29 @@
+name: fuel-finder
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: fuel
+      POSTGRES_PASSWORD: fuel      # fine for local practice only
+      POSTGRES_DB: fuel
+    volumes:
+      - fuel-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fuel -d fuel"]
+      interval: 5s
+      retries: 10
+
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://fuel:fuel@db:5432/fuel
+      APP_ENV: docker
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  fuel-data:
