@@ -11,6 +11,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Q4. Which files does the app need? The code and the website (not the tests)
 COPY app ./app
 COPY static ./static
+# Version label, set by the pipeline (defaults to "dev")
+ARG APP_VERSION=dev
+ENV APP_VERSION=$APP_VERSION
 
 # Q5. How is it run, and how do we know it's healthy?
 # Python images have no non-root user, so we create one
