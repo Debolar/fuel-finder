@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fuel Finder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <div>
+        <h1>Fuel Finder</h1>
+        <p class="tagline">The nearest fuel stations, sorted by distance.</p>
+      </div>
+      <div class="status" id="status"><span class="dot"></span><span id="status-text">Connecting…</span></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card controls" aria-label="Search">
+      <button id="locate" type="button">Use my location</button>
+      <span class="or">or</span>
+      <label class="grow">
+        <span class="sr-only">Choose an area</span>
+        <select id="area">
+          <option value="">Choose an area…</option>
+        </select>
+      </label>
+      <label>
+        <span class="sr-only">Fuel type</span>
+        <select id="fuel"></select>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="open-only"> Open now
+      </label>
+    </section>
+
+    <p class="note" id="where">Showing all stations. Share your location or pick an area to sort by distance.</p>
+
+    <ul class="stations" id="stations"></ul>
+    <p class="empty" id="empty" hidden>No stations match these filters.</p>
+
+    <p class="disclaimer">Demo data: these are fictional sample stations with made-up prices.</p>
+  </main>
+
+  <footer class="wrap foot">
+    <span id="version">version –</span>
+    <span id="env"></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
