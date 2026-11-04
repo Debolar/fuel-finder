@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: fuel-finder:k8s-v1
+          image: ghcr.io/debolar/fuel-finder:85b31a15a55733c1b5a3b3cc534d1f7abf32adb0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
